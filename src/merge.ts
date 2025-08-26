@@ -5,7 +5,7 @@ import { mergeMap } from 'rxjs/operators'
 
 const { isEqual } = lodash
 const log = debug('ouch-rx:merge')
-export type MergeFunction<T> = (
+export type MergeFunction = <T>(
   input: PouchDB.Core.Document<T>,
   existing?: PouchDB.Core.ExistingDocument<T>
 ) => PouchDB.Core.Document<T>
@@ -13,7 +13,7 @@ export type MergeFunction<T> = (
 export const merge =
   <T extends {}>(
     db: PouchDB.Database<T>,
-    mergeFunction: MergeFunction<T>
+    mergeFunction: MergeFunction
   ): OperatorFunction<PouchDB.Core.Document<T>, T & PouchDB.Core.IdMeta & PouchDB.Core.RevisionIdMeta> =>
   (source: Observable<PouchDB.Core.Document<T>>) =>
     source.pipe(
