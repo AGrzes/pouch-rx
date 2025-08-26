@@ -2,7 +2,7 @@
   "name": "ouch-rx",
   "version": "2.1.2",
   "description": "Reactive wrapper for pouchdb",
-  "main": "index.js",
+  "main": "target/index.js",
   "scripts": {
     "test": "c8 mocha test/**/*.{ts,tsx}",
     "lint": "eslint src test",
