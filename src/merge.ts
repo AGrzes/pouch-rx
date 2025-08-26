@@ -4,7 +4,7 @@ import { flatMap } from 'rxjs/operators'
 
 const { isEqual } = lodash
 const log = debug('ouch-rx:merge')
-module.exports.merge = (db, f) => (source) =>
+export const merge = (db, f) => (source) =>
   source.pipe(
     flatMap((object) => {
       log('Saving %o', object)

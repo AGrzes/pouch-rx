@@ -2,7 +2,7 @@ import debug from 'debug'
 import { Observable } from 'rxjs'
 
 const log = debug('ouch-rx:all')
-module.exports.all = (db, options) => {
+export const all = (db, options?) => {
   log('Called with options %o', options)
   return Observable.create((observer) => {
     log('Calling allDocs')

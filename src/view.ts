@@ -2,7 +2,7 @@ import debug from 'debug'
 import { Observable } from 'rxjs'
 
 const log = debug('ouch-rx:view')
-module.exports.view = (db, name, options) => {
+export const view = (db, name?, options?) => {
   log('Called with name %s and options %o', name, options)
   return Observable.create((observer) => {
     log('Calling query')
