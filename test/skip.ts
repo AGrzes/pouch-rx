@@ -5,12 +5,12 @@ import { skip } from '../src/skip'
 const expect = chai.expect
 describe('skip', function () {
   it('should return new document', function () {
-    const doc = { a: 'b' }
+    const doc = { a: 'b', _id: 'id' }
     expect(skip(doc)).to.be.deep.equals(doc)
   })
   it('should return null if existing supplied', function () {
-    const doc = { a: 'b' }
-    const existing = { _rev: '_rev' }
+    const doc = { a: 'b', _id: 'id' }
+    const existing = { a: 'c', _rev: '_rev', _id: 'id' }
     expect(skip(doc, existing)).to.be.null
   })
 })
