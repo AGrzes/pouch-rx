@@ -1,4 +1,6 @@
-const log = require('debug')('ouch-rx:assign')
+import debug from 'debug'
+
+const log = debug('ouch-rx:assign')
 module.exports = (document, { _rev, ...rest } = {} as any) => {
   log('Called with document %o rev %s rest %o', document, _rev, rest)
   const result = _rev ? { ...rest, ...document, _rev } : document
