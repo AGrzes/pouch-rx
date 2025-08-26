@@ -13,7 +13,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of<any>('a')
-        .pipe(sink(db as PouchDB.Database))
+        .pipe(sink(db as unknown as PouchDB.Database))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.called
@@ -27,7 +27,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of<any>('a', 'b')
-        .pipe(sink(db as PouchDB.Database))
+        .pipe(sink(db as unknown as PouchDB.Database))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledWith('a')
@@ -43,7 +43,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.reject(error)),
       }
       rx.of<any>('a', 'b')
-        .pipe(sink(db as PouchDB.Database))
+        .pipe(sink(db as unknown as PouchDB.Database))
         .subscribe({
           error(err) {
             expect(err).to.be.equal(error)

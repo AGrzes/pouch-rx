@@ -12,7 +12,7 @@ describe('Ouch', function () {
       const db = {
         allDocs: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      all(db as PouchDB.Database).subscribe({
+      all(db as unknown as PouchDB.Database).subscribe({
         complete() {
           expect(db.allDocs).to.have.been.called
           done()
@@ -25,7 +25,7 @@ describe('Ouch', function () {
       const db = {
         allDocs: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      all(db as PouchDB.Database).subscribe({
+      all(db as unknown as PouchDB.Database).subscribe({
         complete() {
           expect(db.allDocs).to.have.been.calledWithMatch((options) => options && options.include_docs === true)
           done()
@@ -38,7 +38,7 @@ describe('Ouch', function () {
       const db = {
         allDocs: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      all(db as PouchDB.Database, {
+      all(db as unknown as PouchDB.Database, {
         conflicts: true,
       }).subscribe({
         complete() {
@@ -64,7 +64,7 @@ describe('Ouch', function () {
           })
         ),
       }
-      all(db as PouchDB.Database)
+      all(db as unknown as PouchDB.Database)
         .pipe(toArray())
         .subscribe({
           next(rows) {
@@ -78,8 +78,8 @@ describe('Ouch', function () {
       const error = new Error()
       const db = {
         allDocs: sinon.spy(() => Promise.reject(error)),
-      } 
-      all(db as PouchDB.Database).subscribe({
+      }
+      all(db as unknown as PouchDB.Database).subscribe({
         complete() {
           expect.fail()
         },

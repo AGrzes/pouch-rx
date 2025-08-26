@@ -14,7 +14,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a')
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.called
@@ -29,7 +29,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a', 'b')
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledWith('a')
@@ -45,7 +45,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a', 'b')
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(f).to.have.been.calledWith('a')
@@ -63,7 +63,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.reject(error)),
       }
       rx.of('a', 'b')
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           error(err) {
             expect(err).to.be.equal(error)
@@ -87,7 +87,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve(object)),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.get).to.have.been.called
@@ -109,7 +109,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve(object)),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.get).to.have.been.calledWith('a')
@@ -130,7 +130,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(f.secondCall).to.have.been.calledWith(object, 'b')
@@ -152,7 +152,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f as any))
         .subscribe({
           complete() {
             expect(db.put.secondCall).to.have.been.calledWith('merge')
@@ -174,7 +174,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f as any))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledOnce
@@ -196,7 +196,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db as PouchDB.Database<any>, f))
+        .pipe(merge(db as unknown as PouchDB.Database<any>, f as any))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledOnce
