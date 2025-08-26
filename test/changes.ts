@@ -23,7 +23,7 @@ describe('Ouch', function () {
           return emiter
         }),
       }
-      changes(db).subscribe({
+      changes(db as PouchDB.Database).subscribe({
         complete() {
           expect(db.changes).to.have.been.called
           done()
@@ -45,11 +45,11 @@ describe('Ouch', function () {
           return emiter
         }),
       }
-      changes(db, {
-        other: true,
+      changes(db as PouchDB.Database, {
+        conflicts: true,
       }).subscribe({
         complete() {
-          expect(db.changes).to.have.been.calledWithMatch((options) => options && options.other === true)
+          expect(db.changes).to.have.been.calledWithMatch((options) => options && options.conflicts === true)
           done()
         },
         error: done,
@@ -70,7 +70,7 @@ describe('Ouch', function () {
           return emiter
         }),
       }
-      changes(db)
+      changes(db as PouchDB.Database)
         .pipe(toArray())
         .subscribe({
           next(rows) {
@@ -93,7 +93,7 @@ describe('Ouch', function () {
           return emiter
         }),
       }
-      changes(db).subscribe({
+      changes(db as PouchDB.Database).subscribe({
         complete() {
           expect.fail()
         },

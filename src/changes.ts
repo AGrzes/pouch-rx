@@ -1,10 +1,13 @@
 import debug from 'debug'
-import { Observable } from 'rxjs'
+import { Observable, Subscriber } from 'rxjs'
 
 const log = debug('ouch-rx:changes')
-export const changes = (db, options?) => {
+export const changes = <T extends {}>(
+  db: PouchDB.Database<T>,
+  options?: PouchDB.Core.ChangesOptions
+): Observable<PouchDB.Core.ChangesResponseChange<T>> => {
   log('Called with options %o', options)
-  return Observable.create((observer) => {
+  return new Observable((observer: Subscriber<PouchDB.Core.ChangesResponseChange<T>>) => {
     log('Calling changes')
     db.changes(options)
       .on('change', (row) => {
