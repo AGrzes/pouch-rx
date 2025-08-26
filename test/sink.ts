@@ -10,10 +10,10 @@ describe('Ouch', function () {
   describe('#sink()', function () {
     it('should call put', function (done) {
       const db = {
-        put: sinon.spy(() => Promise.resolve(null)),
+        put: sinon.spy(() => Promise.resolve({})),
       }
-      rx.of('a')
-        .pipe(sink(db))
+      rx.of<any>('a')
+        .pipe(sink(db as PouchDB.Database))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.called
@@ -24,10 +24,10 @@ describe('Ouch', function () {
     })
     it('should pass items to put', function (done) {
       const db = {
-        put: sinon.spy(() => Promise.resolve(null)),
+        put: sinon.spy(() => Promise.resolve({})),
       }
-      rx.of('a', 'b')
-        .pipe(sink(db))
+      rx.of<any>('a', 'b')
+        .pipe(sink(db as PouchDB.Database))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledWith('a')
@@ -42,8 +42,8 @@ describe('Ouch', function () {
       const db = {
         put: sinon.spy(() => Promise.reject(error)),
       }
-      rx.of('a', 'b')
-        .pipe(sink(db))
+      rx.of<any>('a', 'b')
+        .pipe(sink(db as PouchDB.Database))
         .subscribe({
           error(err) {
             expect(err).to.be.equal(error)
