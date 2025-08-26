@@ -11,10 +11,10 @@ describe('Ouch', function () {
     it('should call put', function (done) {
       const f = sinon.spy((x) => x)
       const db = {
-        put: sinon.spy(() => Promise.resolve(null)),
+        put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a')
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.called
@@ -26,10 +26,10 @@ describe('Ouch', function () {
     it('should pass items to put', function (done) {
       const f = sinon.spy((x) => x)
       const db = {
-        put: sinon.spy(() => Promise.resolve(null)),
+        put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a', 'b')
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledWith('a')
@@ -42,10 +42,10 @@ describe('Ouch', function () {
     it('should pass items to provided function', function (done) {
       const f = sinon.spy((x) => x)
       const db = {
-        put: sinon.spy(() => Promise.resolve(null)),
+        put: sinon.spy(() => Promise.resolve({})),
       }
       rx.of('a', 'b')
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(f).to.have.been.calledWith('a')
@@ -63,7 +63,7 @@ describe('Ouch', function () {
         put: sinon.spy(() => Promise.reject(error)),
       }
       rx.of('a', 'b')
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           error(err) {
             expect(err).to.be.equal(error)
@@ -87,7 +87,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve(object)),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.get).to.have.been.called
@@ -109,7 +109,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve(object)),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.get).to.have.been.calledWith('a')
@@ -126,11 +126,11 @@ describe('Ouch', function () {
       const error = new Error()
       error.name = 'conflict'
       const db = {
-        put: sinon.stub().onFirstCall().returns(Promise.reject(error)).onSecondCall().returns(Promise.resolve()),
+        put: sinon.stub().onFirstCall().returns(Promise.reject(error)).onSecondCall().returns(Promise.resolve({})),
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(f.secondCall).to.have.been.calledWith(object, 'b')
@@ -148,11 +148,11 @@ describe('Ouch', function () {
       const error = new Error()
       error.name = 'conflict'
       const db = {
-        put: sinon.stub().onFirstCall().returns(Promise.reject(error)).onSecondCall().returns(Promise.resolve()),
+        put: sinon.stub().onFirstCall().returns(Promise.reject(error)).onSecondCall().returns(Promise.resolve({})),
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put.secondCall).to.have.been.calledWith('merge')
@@ -174,7 +174,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledOnce
@@ -196,7 +196,7 @@ describe('Ouch', function () {
         get: sinon.spy(() => Promise.resolve('b')),
       }
       rx.of(object)
-        .pipe(merge(db, f))
+        .pipe(merge(db as PouchDB.Database<any>, f))
         .subscribe({
           complete() {
             expect(db.put).to.have.been.calledOnce
