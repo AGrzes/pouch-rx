@@ -4,6 +4,7 @@
   "description": "Reactive wrapper for pouchdb",
   "main": "target/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "c8 mocha test/**/*.{ts,tsx}",
     "lint": "eslint src test",
     "fix": "eslint --fix src test",
