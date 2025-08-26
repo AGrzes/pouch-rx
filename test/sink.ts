@@ -1,9 +1,11 @@
+import chai from 'chai'
 import 'mocha'
+import * as rx from 'rxjs'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import { sink } from '../src/sink'
 
-const expect = require('chai').use(require('sinon-chai')).expect
-const sinon = require('sinon')
-const { sink } = require('../src/sink')
-const rx = require('rxjs')
+const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
   describe('#sink()', function () {
     it('should call put', function (done) {

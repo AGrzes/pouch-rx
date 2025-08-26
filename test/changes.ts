@@ -1,11 +1,13 @@
+import chai from 'chai'
+import EventEmitter from 'events'
 import 'mocha'
+import process from 'process'
+import { toArray } from 'rxjs/operators'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import { changes } from '../src/changes'
 
-const expect = require('chai').use(require('sinon-chai')).expect
-const sinon = require('sinon')
-const { changes } = require('../src/changes')
-const { toArray } = require('rxjs/operators')
-const EventEmitter = require('events')
-const process = require('process')
+const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
   describe('#changes()', function () {
     it('should call changes', function (done) {

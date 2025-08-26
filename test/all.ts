@@ -1,8 +1,11 @@
+import chai from 'chai'
 import 'mocha'
-const expect = require('chai').use(require('sinon-chai')).expect
-const sinon = require('sinon')
-const { all } = require('../src/all')
-const { toArray } = require('rxjs/operators')
+import { toArray } from 'rxjs/operators'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import { all } from '../src/all'
+
+const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
   describe('#all()', function () {
     it('should call allDocs', function (done) {

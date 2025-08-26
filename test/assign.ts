@@ -1,7 +1,8 @@
+import chai from 'chai'
 import 'mocha'
+import { assign } from '../src/assign'
 
-const expect = require('chai').expect
-const assign = require('../src/assign')
+const expect = chai.expect
 describe('override', function () {
   it('should return new document', function () {
     const doc = { a: 'b' }

@@ -1,9 +1,11 @@
+import chai from 'chai'
 import 'mocha'
+import * as rx from 'rxjs'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import { merge } from '../src/merge'
 
-const expect = require('chai').use(require('sinon-chai')).expect
-const sinon = require('sinon')
-const { merge } = require('../src/merge')
-const rx = require('rxjs')
+const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
   describe('#merge()', function () {
     it('should call put', function (done) {

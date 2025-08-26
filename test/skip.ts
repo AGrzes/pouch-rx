@@ -1,7 +1,8 @@
+import chai from 'chai'
 import 'mocha'
+import { skip } from '../src/skip'
 
-const expect = require('chai').expect
-const skip = require('../src/skip')
+const expect = chai.expect
 describe('skip', function () {
   it('should return new document', function () {
     const doc = { a: 'b' }

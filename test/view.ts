@@ -1,9 +1,11 @@
+import chai from 'chai'
 import 'mocha'
+import { toArray } from 'rxjs/operators'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+import { view } from '../src/view'
 
-const expect = require('chai').use(require('sinon-chai')).expect
-const sinon = require('sinon')
-const { view } = require('../src/view')
-const { toArray } = require('rxjs/operators')
+const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
   describe('#view()', function () {
     it('should call query', function (done) {
