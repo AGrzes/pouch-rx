@@ -6,6 +6,7 @@
   "types": "target/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "prepublish": "pnpm build",
     "test": "c8 mocha test/**/*.{ts,tsx}",
     "lint": "eslint src test",
     "fix": "eslint --fix src test",
@@ -52,6 +53,13 @@
     "reactive",
     "pouchdb",
     "couchdb"
+  ],
+  "files": [
+    "target",
+    "types",
+    "package.json",
+    "README.md",
+    "LICENSE"
   ],
   "author": "Grzegorz Abramczyk <abramczykg@gmail.com>",
   "license": "MIT",
