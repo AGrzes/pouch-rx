@@ -3,7 +3,7 @@ import 'mocha'
 import { toArray } from 'rxjs/operators'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import { all } from '../src/all'
+import { all } from '../../src/source/all'
 
 const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {

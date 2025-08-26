@@ -3,7 +3,7 @@ import 'mocha'
 import * as rx from 'rxjs'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import { merge } from '../src/merge'
+import { merge } from '../../src/merge/merge'
 
 const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {

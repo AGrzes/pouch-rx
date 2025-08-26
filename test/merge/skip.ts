@@ -1,6 +1,6 @@
 import chai from 'chai'
 import 'mocha'
-import { skip } from '../src/skip'
+import { skip } from '../../src/merge/skip'
 
 const expect = chai.expect
 describe('skip', function () {

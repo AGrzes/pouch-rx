@@ -5,7 +5,7 @@ import process from 'process'
 import { toArray } from 'rxjs/operators'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import { changes } from '../src/changes'
+import { changes } from '../../src/source/changes'
 
 const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {

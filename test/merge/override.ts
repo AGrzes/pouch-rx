@@ -1,6 +1,6 @@
 import chai from 'chai'
 import 'mocha'
-import { override } from '../src/override'
+import { override } from '../../src/merge/override'
 
 const expect = chai.expect
 describe('override', function () {

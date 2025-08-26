@@ -1,11 +1,11 @@
-import { all } from './all'
-import { assign } from './assign'
-import { changes } from './changes'
-import { merge } from './merge'
-import { override } from './override'
-import { sink } from './sink'
-import { skip } from './skip'
-import { view } from './view'
+import { assign } from './merge/assign'
+import { merge } from './merge/merge'
+import { override } from './merge/override'
+import { skip } from './merge/skip'
+import { sink } from './sink/sink'
+import { all } from './source/all'
+import { changes } from './source/changes'
+import { view } from './source/view'
 
 export class Ouch<T extends {}> {
   constructor(private db: PouchDB.Database<T>) {}

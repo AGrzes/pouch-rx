@@ -3,7 +3,7 @@ import 'mocha'
 import * as rx from 'rxjs'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
-import { sink } from '../src/sink'
+import { sink } from '../../src/sink/sink'
 
 const expect = chai.use(sinonChai).expect
 describe('Ouch', function () {
