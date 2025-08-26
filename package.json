@@ -3,6 +3,7 @@
   "version": "2.1.2",
   "description": "Reactive wrapper for pouchdb",
   "main": "target/index.js",
+  "types": "target/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "c8 mocha test/**/*.{ts,tsx}",
