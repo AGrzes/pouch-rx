@@ -1,3 +1,5 @@
+import 'mocha'
+
 const expect = require('chai').expect
 const assign = require('../src/assign')
 describe('override', function () {

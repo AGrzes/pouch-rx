@@ -1,3 +1,5 @@
+import 'mocha'
+
 const expect = require('chai').expect
 const skip = require('../src/skip')
 describe('skip', function () {

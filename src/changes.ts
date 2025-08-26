@@ -1,10 +1,10 @@
 import debug from 'debug'
-import rx from 'rxjs'
+import { Observable } from 'rxjs'
 
 const log = debug('ouch-rx:changes')
 module.exports.changes = (db, options) => {
   log('Called with options %o', options)
-  return rx.Observable.create((observer) => {
+  return Observable.create((observer) => {
     log('Calling changes')
     db.changes(options)
       .on('change', (row) => {

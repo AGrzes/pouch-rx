@@ -1,7 +1,9 @@
+import 'mocha'
+
 const expect = require('chai').use(require('sinon-chai')).expect
 const sinon = require('sinon')
-const {changes} = require('../src/changes')
-const {toArray} = require('rxjs/operators')
+const { changes } = require('../src/changes')
+const { toArray } = require('rxjs/operators')
 const EventEmitter = require('events')
 const process = require('process')
 describe('Ouch', function () {
@@ -17,14 +19,14 @@ describe('Ouch', function () {
             })
           })
           return emiter
-        })
+        }),
       }
       changes(db).subscribe({
-        complete () {
+        complete() {
           expect(db.changes).to.have.been.called
           done()
         },
-        error: done
+        error: done,
       })
     })
 
@@ -39,16 +41,16 @@ describe('Ouch', function () {
             })
           })
           return emiter
-        })
+        }),
       }
       changes(db, {
-        other: true
+        other: true,
       }).subscribe({
-        complete () {
+        complete() {
           expect(db.changes).to.have.been.calledWithMatch((options) => options && options.other === true)
           done()
         },
-        error: done
+        error: done,
       })
     })
 
@@ -64,15 +66,16 @@ describe('Ouch', function () {
             })
           })
           return emiter
-        })
+        }),
       }
-      changes(db).pipe(toArray())
+      changes(db)
+        .pipe(toArray())
         .subscribe({
-          next (rows) {
+          next(rows) {
             expect(rows).to.be.deep.equals([{ doc: 'a' }, { doc: 'b' }])
             done()
           },
-          error: done
+          error: done,
         })
     })
     it('should handle error', function (done) {
@@ -86,16 +89,16 @@ describe('Ouch', function () {
             })
           })
           return emiter
-        })
+        }),
       }
       changes(db).subscribe({
-        complete () {
+        complete() {
           expect.fail()
         },
         error: (err) => {
           expect(err).to.be.equals(error)
           done()
-        }
+        },
       })
     })
   })

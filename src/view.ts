@@ -1,10 +1,10 @@
 import debug from 'debug'
-import rx from 'rxjs'
+import { Observable } from 'rxjs'
 
 const log = debug('ouch-rx:view')
 module.exports.view = (db, name, options) => {
   log('Called with name %s and options %o', name, options)
-  return rx.Observable.create((observer) => {
+  return Observable.create((observer) => {
     log('Calling query')
     db.query(name, { ...options, include_docs: true })
       .then((documents) => {

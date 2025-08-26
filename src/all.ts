@@ -1,10 +1,10 @@
 import debug from 'debug'
-import rx from 'rxjs'
+import { Observable } from 'rxjs'
 
 const log = debug('ouch-rx:all')
 module.exports.all = (db, options) => {
   log('Called with options %o', options)
-  return rx.Observable.create((observer) => {
+  return Observable.create((observer) => {
     log('Calling allDocs')
     db.allDocs({ ...options, include_docs: true })
       .then((documents) => {
