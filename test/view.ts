@@ -12,7 +12,7 @@ describe('Ouch', function () {
       const db = {
         query: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      view(db).subscribe({
+      view(db as PouchDB.Database).subscribe({
         complete() {
           expect(db.query).to.have.been.called
           done()
@@ -25,7 +25,7 @@ describe('Ouch', function () {
       const db = {
         query: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      view(db, 'name').subscribe({
+      view(db as PouchDB.Database, 'name').subscribe({
         complete() {
           expect(db.query).to.have.been.calledWithMatch('name', (options) => options && options.include_docs === true)
           done()
@@ -38,11 +38,11 @@ describe('Ouch', function () {
       const db = {
         query: sinon.spy(() => Promise.resolve({ rows: [] })),
       }
-      view(db, 'name', {
-        other: true,
+      view(db as PouchDB.Database, 'name', {
+        conflicts: true,
       }).subscribe({
         complete() {
-          expect(db.query).to.have.been.calledWithMatch('name', (options) => options && options.other === true)
+          expect(db.query).to.have.been.calledWithMatch('name', (options) => options && options.conflicts === true)
           done()
         },
         error: done,
@@ -64,7 +64,7 @@ describe('Ouch', function () {
           })
         ),
       }
-      view(db, 'name')
+      view(db as PouchDB.Database, 'name')
         .pipe(toArray())
         .subscribe({
           next(rows) {
@@ -79,7 +79,7 @@ describe('Ouch', function () {
       const db = {
         query: sinon.spy(() => Promise.reject(error)),
       }
-      view(db, 'name').subscribe({
+      view(db as PouchDB.Database, 'name').subscribe({
         complete() {
           expect.fail()
         },

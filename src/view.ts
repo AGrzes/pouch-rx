@@ -1,20 +1,17 @@
 import debug from 'debug'
-import { Observable } from 'rxjs'
+import { defer, from, Observable } from 'rxjs'
+import { mergeMap } from 'rxjs/operators'
 
 const log = debug('ouch-rx:view')
-export const view = (db, name?, options?) => {
+export const view = <T extends {}, R extends {}>(
+  db: PouchDB.Database<T>,
+  name?: string,
+  options?: PouchDB.Query.Options<T, R>
+): Observable<PouchDB.Core.ExistingDocument<R>> => {
   log('Called with name %s and options %o', name, options)
-  return Observable.create(async (observer) => {
-    log('Calling query')
-    try {
-      const documents = await db.query(name, { ...options, include_docs: true })
-      log('Pushing documents')
-      documents.rows.forEach((row) => observer.next(row.doc))
-      log('Finishing')
-      observer.complete()
-    } catch (err) {
-      log('Error %o', err)
-      return observer.error(err)
-    }
-  })
+  return defer(() =>
+    from(db.query<R>(name, { ...options, include_docs: true })).pipe(
+      mergeMap((documents) => from(documents.rows.map(({ doc }) => doc)))
+    )
+  )
 }
