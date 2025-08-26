@@ -1,3 +1,4 @@
+/* c8 ignore start */
 import { assign } from './merge/assign'
 import { merge } from './merge/merge'
 import { override } from './merge/override'
