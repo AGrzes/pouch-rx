@@ -1,6 +1,6 @@
 {
-  "name": "ouch-rx",
-  "version": "2.1.2",
+  "name": "@agrzes/pouch-rx",
+  "version": "3.0.0",
   "description": "Reactive wrapper for pouchdb",
   "main": "target/index.js",
   "types": "target/index.d.ts",
