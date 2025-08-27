@@ -6,7 +6,7 @@ import sinonChai from 'sinon-chai'
 import { all } from '../../src/source/all'
 
 const expect = chai.use(sinonChai).expect
-describe('Ouch', function () {
+describe('pouch-rx', function () {
   describe('#all()', function () {
     it('should call allDocs', function (done) {
       const db = {

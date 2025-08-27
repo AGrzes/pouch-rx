@@ -4,7 +4,7 @@ import { Observable, OperatorFunction } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 
 const { isEqual } = lodash
-const log = debug('ouch-rx:merge')
+const log = debug('pouch-rx:merge')
 export type MergeFunction = <T>(
   input: PouchDB.Core.Document<T>,
   existing?: PouchDB.Core.ExistingDocument<T>

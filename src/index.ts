@@ -8,7 +8,7 @@ import { all } from './source/all'
 import { changes } from './source/changes'
 import { view } from './source/view'
 
-export class Ouch<T extends {}> {
+export class PouchRx<T extends {}> {
   constructor(private db: PouchDB.Database<T>) {}
   sink() {
     return sink(this.db)

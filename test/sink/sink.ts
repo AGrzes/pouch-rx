@@ -6,7 +6,7 @@ import sinonChai from 'sinon-chai'
 import { sink } from '../../src/sink/sink'
 
 const expect = chai.use(sinonChai).expect
-describe('Ouch', function () {
+describe('pouch-rx', function () {
   describe('#sink()', function () {
     it('should call put', function (done) {
       const db = {

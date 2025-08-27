@@ -2,7 +2,7 @@ import debug from 'debug'
 import { OperatorFunction } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 
-const log = debug('ouch-rx:sink')
+const log = debug('pouch-rx:sink')
 export const sink =
   <T extends {}>(
     db: PouchDB.Database<T>

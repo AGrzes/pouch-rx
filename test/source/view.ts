@@ -6,7 +6,7 @@ import sinonChai from 'sinon-chai'
 import { view } from '../../src/source/view'
 
 const expect = chai.use(sinonChai).expect
-describe('Ouch', function () {
+describe('pouch-rx', function () {
   describe('#view()', function () {
     it('should call query', function (done) {
       const db = {

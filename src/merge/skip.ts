@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { MergeFunction } from './merge.js'
 
-const log = debug('ouch-rx:skip')
+const log = debug('pouch-rx:skip')
 export const skip: MergeFunction = <T>(
   document: PouchDB.Core.Document<T>,
   existing?: PouchDB.Core.ExistingDocument<T>

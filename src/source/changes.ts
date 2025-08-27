@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { Observable, Subscriber } from 'rxjs'
 
-const log = debug('ouch-rx:changes')
+const log = debug('pouch-rx:changes')
 export const changes = <T extends {}>(
   db: PouchDB.Database<T>,
   options?: PouchDB.Core.ChangesOptions

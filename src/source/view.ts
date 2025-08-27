@@ -2,7 +2,7 @@ import debug from 'debug'
 import { defer, from, Observable } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 
-const log = debug('ouch-rx:view')
+const log = debug('pouch-rx:view')
 export const view = <T extends {}, R extends {}>(
   db: PouchDB.Database<T>,
   name?: string,

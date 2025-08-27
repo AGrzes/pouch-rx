@@ -6,7 +6,7 @@ import sinonChai from 'sinon-chai'
 import { merge } from '../../src/merge/merge'
 
 const expect = chai.use(sinonChai).expect
-describe('Ouch', function () {
+describe('pouch-rx', function () {
   describe('#merge()', function () {
     it('should call put', function (done) {
       const f = sinon.spy((x) => x)

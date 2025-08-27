@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { MergeFunction } from './merge.js'
 
-const log = debug('ouch-rx:override')
+const log = debug('pouch-rx:override')
 export const override: MergeFunction = <T>(
   document: PouchDB.Core.Document<T>,
   { _rev }: PouchDB.Core.ExistingDocument<T> = {} as any

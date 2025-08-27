@@ -1,7 +1,7 @@
 import debug from 'debug'
 import { MergeFunction } from './merge.js'
 
-const log = debug('ouch-rx:assign')
+const log = debug('pouch-rx:assign')
 export const assign: MergeFunction = <T>(
   document: PouchDB.Core.Document<T>,
   { _rev, ...rest }: PouchDB.Core.ExistingDocument<T> = {} as any
