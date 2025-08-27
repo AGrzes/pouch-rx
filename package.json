@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AGrzes/ouch-rx.git"
+    "url": "git+https://github.com/AGrzes/pouch-rx.git"
   },
   "keywords": [
     "rx",
@@ -62,9 +62,9 @@
   "author": "Grzegorz Abramczyk <abramczykg@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AGrzes/ouch-rx/issues"
+    "url": "https://github.com/AGrzes/pouch-rx/issues"
   },
-  "homepage": "https://github.com/AGrzes/ouch-rx#readme",
+  "homepage": "https://github.com/AGrzes/pouch-rx#readme",
   "devDependencies": {
     "@types/chai": "^5.2.2",
     "@types/debug": "^4.1.12",
