@@ -5,7 +5,7 @@ import { mergeMap } from 'rxjs/operators'
 const log = debug('pouch-rx:all')
 export const all = <T extends {}>(
   db: PouchDB.Database<T>,
-  options?: Parameters<PouchDB.Database<T>['allDocs']>[0]
+  options?: PouchDB.Core.AllDocsWithKeyOptions | PouchDB.Core.AllDocsWithinRangeOptions | PouchDB.Core.AllDocsOptions
 ): Observable<PouchDB.Core.ExistingDocument<T>> => {
   log('Called with options %o', options)
   return defer(() =>
